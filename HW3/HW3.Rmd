@@ -1,0 +1,67 @@
+---
+title: "Homework 3"
+author: "WIBE"
+date: "8/30/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Instructions: For this assignment, you need to answer a couple questions with code and then take a screenshot of your working environment.**
+
+### 1) Use R to figure out how many elements in the vector below are greater than 2 and then tell me what their sum (of the larger than 2 elements) is.
+```{r}
+rooms <- c(1, 2, 4, 5, 1, 3, 1, NA, 3, 1, 3, 2, 1, NA, 1, 8, 3, 1, 4, NA, 1, 3, 1, 2, 1, 7, 1, 9, 3, NA)
+
+# Counting the sum of numbers greater than two excluding the NA's
+length(na.omit(rooms) > 2)
+
+sum(na.omit(rooms) > 2)
+```
+Answer:
+
+### 2) What type of data is in the 'rooms' vector?
+'Class' function tells us the class of a vector:
+```{r}
+class(rooms)
+```
+
+
+### 3) Installing tidyverse, loading data using read_csv()
+Save the screenshot as an image and put it in your AUID_lastname_firstname repository inside our Github organisation (github.com/Digital-Methods-HASS) or equivalent. Place here the URL leading to the screenshot in your repository.
+```{r}
+library(tidyverse)
+interviews <- read_csv("/Users/WIBE/Desktop/CogSci/Cultural data science/Introduction course/Day 2/data/SAFI_clean.csv")
+```
+
+
+### 4) Challenge: If you managed to create your own Danish king dataset, use it. If not, you the one attached to this assignment (it might need to be cleaned up a bit). Load the dataset into R as a tibble. Calculate the mean() and median() duration of rule over time and find the three monarchs ruling the longest. How many days did they rule (accounting for transition year?)
+```{r}
+kings_and_queens <- read_csv(as_tibble("/Users/WIBE/Desktop/CogSci/Cultural data science/Introduction course/Day 2/data/Danish Monarchs - Sheet1.csv"))
+```
+
+### Calculating mean and median duration of rule over time
+```{r}
+median((kings_and_queens$end_reign)-(kings_and_queens$start_reign), na.rm = T)
+
+mean((kings_and_queens$end_reign)-(kings_and_queens$start_reign), na.rm = T)
+```
+Mean reign length is: **47 years**
+Median reign length is: **43 years**
+
+### Finding the three monarchs ruling the longest
+```{r}
+kings_and_queens %>% 
+  mutate(reign_length = end_reign-start_reign) %>% 
+  filter(reign_length > 39)
+```
+
+
+
+
+
+
+
+
