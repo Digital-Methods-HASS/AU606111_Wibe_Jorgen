@@ -55,10 +55,16 @@ Median reign length is: **43 years**
 ```{r}
 kings_and_queens %>% 
   mutate(reign_length = end_reign-start_reign) %>% 
-  filter(reign_length > 39)
+  filter(reign_length > 42) %>% 
+  select(Monarch,reign_length)
 ```
+The three longest reigning kings were
 
-
+  Monarch            reign_length
+  
+1 Erik 7. af Pommern           43
+2 Christian 4.                 60
+3 Christian 9.                 43
 
 
 
