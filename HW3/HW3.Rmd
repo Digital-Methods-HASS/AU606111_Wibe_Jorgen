@@ -2,7 +2,9 @@
 title: "Homework 3"
 author: "WIBE"
 date: "8/30/2022"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
