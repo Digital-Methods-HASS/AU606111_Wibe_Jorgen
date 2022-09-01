@@ -17,9 +17,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 rooms <- c(1, 2, 4, 5, 1, 3, 1, NA, 3, 1, 3, 2, 1, NA, 1, 8, 3, 1, 4, NA, 1, 3, 1, 2, 1, 7, 1, 9, 3, NA)
 
-# Counting the sum of numbers greater than two excluding the NA's
+# Counting how many elements are greater than two excluding the NA's
 length(na.omit(rooms) > 2)
 
+# Counting the sum of numbers greater than two excluding the NA's
 sum(na.omit(rooms) > 2)
 ```
 Answer:
