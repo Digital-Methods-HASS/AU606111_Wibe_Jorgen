@@ -1,0 +1,16 @@
+   61749 9236_Detail_Stratigraphy.RW2
+   68960 9236_Detail_Trench.RW2
+   78622 9236_Overview_W.RW2
+   66044 9237_Overview_W.RW2
+   62238 9238_Overview_S.RW2
+   62835 9239_Overview_S.RW2
+   60806 9240_Overview_S.RW2
+   65975 9241_Overview_S.RW2
+   64662 9242_Overview_S.RW2
+   86819 9243_Detail_Trench.RW2
+   72096 9243_Overview_N.RW2
+   70533 9244_Overview_S.RW2
+   68512 9245_Overview_S.RW2
+   65913 9246_Overview_S.RW2
+   87391 9247_Overview_SW.RW2
+ 1043155 total

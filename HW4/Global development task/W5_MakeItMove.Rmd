@@ -18,15 +18,8 @@ Today, you will load a filtered gapminder dataset -  with a subset of data on gl
 First, start with installing the relevant packages 'tidyverse', 'gganimate', and 'gapminder'.
 
 ```{r libraries, echo = FALSE}
-# install.packages("gganimate")
-# install.packages("gifski")
-# install.packages("av")
-# install.packages("gapminder")
-library(tidyverse)
-library(gganimate)
-library(gifski)
-library(av)
-library(gapminder)
+library(pacman)
+pacman::p_load(gganimate,gifski,av,gapminder,tidyverse)
 ```
 
 ## Look at the data and tackle the tasks
