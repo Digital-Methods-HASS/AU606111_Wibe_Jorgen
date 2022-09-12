@@ -27,6 +27,7 @@ length(na.omit(rooms[rooms > 2]))
 sum(na.omit(rooms[rooms > 2]))
 ```
 
+
 **Answer:**
 
 * Length of elements greater than two = **12**
@@ -68,16 +69,17 @@ Median reign length is: **43 years**
 ```{r}
 kings_and_queens %>% 
   mutate(reign_length = end_reign-start_reign) %>% 
-  filter(reign_length > 42) %>% 
-  select(Monarch,reign_length)
+  arrange(desc(reign_length)) %>% 
+  select(Monarch,reign_length) %>% 
+  head(3)
 ```
 The three longest reigning kings were
 
-  Monarch            reign_length
-  
-1 Erik 7. af Pommern           43
-2 Christian 4.                 60
-3 Christian 9.                 43
+1) Christian 4. ruling for 60 years
+
+2) Erik 7. af Pommern ruling for 43 years
+
+3) Christian 9. ruling for 43 years
 
 
 
