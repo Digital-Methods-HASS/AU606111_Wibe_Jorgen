@@ -1,0 +1,84 @@
+---
+title: "Homework 6"
+author: "Jørgen Højlund Wibe"
+output:
+  pdf_document: default
+  html_document: default
+subtitle: Cultural Datascience 2022
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Loading data**
+```{r}
+library(pacman)
+pacman::p_load(gapminder, tidyverse)
+df <- gapminder
+```
+
+### Task 1
+**Task description**
+
+*Define a defensive function that calculates the Gross Domestic Product of a nation from the data available in the gapminder dataset. You can use the population and GDPpercapita columns for it.*
+
+*Using that function, calculate the GDP of Denmark in the following years: 1967, 1977, 1987, 1997, 2007, and 2017.*
+
+**Solution**
+```{r}
+# Defining function
+find_gdp <- function(df, year=NULL, country=NULL) {
+  if (!is.numeric(year)) {
+    warning(stop("Year must be of type numeric"))
+  }
+  if (!is.character(country)) {
+    warning(stop("Country must be of type character"))
+  }
+  if(!is.null(year)) { # if the 'year' variable is not empty...
+    df <- df[df$year %in% year, ] # add the specified year to df
+  }
+  
+  if (!is.null(country)) { # same as above
+    df <- df[df$country %in% country, ] # -||-
+  }
+  
+  gdp <- df$pop * df$gdpPercap # calculating gdp: multiplies population with GDP per capita
+
+  new_df <- cbind(df, gdp=gdp) # combining results into one dataframe
+  return(new_df)
+}
+
+# Running function, specifying values
+find_gdp(df, year = c(1967, 1977, 1987, 1997, 2007, 2017), country = "Denmark" )
+```
+
+
+
+### Task 2
+**Task description**
+
+*Write a script that loops over each country in the gapminder dataset, tests whether the country starts with a ‘B’ , and prints out whether the life expectancy is smaller than 50, between 50 and 70, or greater than 70. (Hint: remember the grepl function, and review the Control Flow tutorial (https://swcarpentry.github.io/r-novice-gapminder/07-control-flow/index.html))*
+
+**Solution**
+```{r}
+countries <- unique(df$country)
+
+for (i in countries) {
+  life_expectancy <- df %>% 
+    filter(country == i) %>% 
+    pull(lifeExp)
+  
+  if ((mean(life_expectancy) < 50) && (i %in% grep("^B", countries, value = T))) {
+    print(paste0(i, " starts with 'B' and has a average life expectancy less than 50!"))
+  }
+  
+  else if (between(mean(life_expectancy), 50, 70) && (i %in% grep("^B", countries, value = T))) {
+    print(paste0(i, " starts with 'B' and has an average life expectancy between 50 and 70"))
+  }
+  
+  else if (mean(life_expectancy) > 70 && (i %in% grep("^B", countries, value = T))) {
+    print(paste0(i, " starts with 'B' and has an average life expectancy more than 70!"))
+  }
+}
+```
