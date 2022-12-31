@@ -2,19 +2,17 @@
 title: "Are we more civilized today?"
 author: "Jørgen Højlund Wibe"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-output: 
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
   html_document:
-    toc: true
-    toc_float: true
-    toc_collapsed: true
+    toc: yes
+    toc_float: yes
+    toc_collapsed: yes
     toc_depth: 3
-    number_sections: true
+    number_sections: yes
     theme: lumen
----
-
-output: 
-  html_document:
-
 ---
 
 ```{r setup, include=FALSE}
@@ -79,10 +77,11 @@ Now, that you have looked at what the data looks like and what it represents, an
 - provide meaningful title and axis labels
 - remember to change the `eval` flag so that the code chunk renders when knitted 
 
-```{r plot-homicides, eval = FALSE}
-ggplot(data = Western_Europe, 
+```{r plot-homicides, eval = TRUE}
+pl1 <- ggplot(data = Western_Europe, 
        aes(x = Year, y = homicides_per_100k, colour = Entity)) + 
   geom_smooth()
+print(pl1)
 ```
 
 The plot shows a descending homicide rate over time for all countries. Italy has generally had a higher homicide rate than the other four countries but today the rates are fairly similar.
